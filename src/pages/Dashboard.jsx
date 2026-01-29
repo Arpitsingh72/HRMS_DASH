@@ -11,9 +11,9 @@ const Dashboard = () => {
   const [recentAttendance, setRecentAttendance] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchDashboardData();
-  }, []);
+  // useEffect(() => {
+  //   fetchDashboardData();
+  // }, []);
 
   const fetchDashboardData = async () => {
     try {
@@ -31,6 +31,11 @@ const Dashboard = () => {
       setLoading(false);
     }
   };
+
+    useEffect(() => {
+    fetchDashboardData();
+  }, []);
+
 
   if (loading) {
     return (

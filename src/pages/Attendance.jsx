@@ -24,13 +24,13 @@ const Attendance = () => {
     status: "Present"
   });
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
 
-  useEffect(() => {
-    filterAttendance();
-  }, [filterAttendance]);
+  // useEffect(() => {
+  //   filterAttendance();
+  // }, [filterAttendance]);
 
   const fetchData = async () => {
     try {
@@ -103,6 +103,14 @@ const Attendance = () => {
       record.employee_id === employeeId && record.status === "Present"
     ).length;
   };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    filterAttendance();
+  }, [filterAttendance]);
 
   if (loading) {
     return (

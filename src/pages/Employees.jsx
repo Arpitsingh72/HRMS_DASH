@@ -21,10 +21,6 @@ const Employees = () => {
     department: ""
   });
 
-  useEffect(() => {
-    fetchEmployees();
-  }, []);
-
   const fetchEmployees = async () => {
     try {
       setLoading(true);
@@ -75,6 +71,10 @@ const Employees = () => {
       toast.error("Failed to delete employee");
     }
   };
+
+    useEffect(() => {
+    fetchEmployees();
+  }, []);
 
   if (loading) {
     return (
