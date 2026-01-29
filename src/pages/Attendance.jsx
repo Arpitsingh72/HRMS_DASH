@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback  } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Calendar, Filter, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
@@ -49,26 +49,26 @@ const Attendance = () => {
     }
   };
 
-  // const filterAttendance = () => {
-  //   if (!selectedDate) {
-  //     setFilteredAttendance(attendance);
-  //   } else {
-  //     const filtered = attendance.filter(record => record.date === selectedDate);
-  //     setFilteredAttendance(filtered);
-  //   }
-  // };
+  const filterAttendance = () => {
+    if (!selectedDate) {
+      setFilteredAttendance(attendance);
+    } else {
+      const filtered = attendance.filter(record => record.date === selectedDate);
+      setFilteredAttendance(filtered);
+    }
+  };
 
 
-  const filterAttendance = useCallback(() => {
-  if (!selectedDate) {
-    setFilteredAttendance(attendance);
-  } else {
-    const filtered = attendance.filter(
-      (record) => record.date === selectedDate
-    );
-    setFilteredAttendance(filtered);
-  }
-}, [attendance, selectedDate]);
+//   const filterAttendance = useCallback(() => {
+//   if (!selectedDate) {
+//     setFilteredAttendance(attendance);
+//   } else {
+//     const filtered = attendance.filter(
+//       (record) => record.date === selectedDate
+//     );
+//     setFilteredAttendance(filtered);
+//   }
+// }, [attendance, selectedDate]);
 
 
   const handleSubmit = async (e) => {
@@ -110,7 +110,7 @@ const Attendance = () => {
 
   useEffect(() => {
     filterAttendance();
-  }, [filterAttendance]);
+  }, [attendance, selectedDate]);
 
   if (loading) {
     return (
